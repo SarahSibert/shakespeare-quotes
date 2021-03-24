@@ -1,0 +1,26 @@
+{
+    "name": "sarahsibert/shakespeare-quotes",
+    "description": "Random quotes from William Shakespeare's work",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SarahSibert",
+            "email": "mail@sarahsibert.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "SarahSibert\\ShakespeareQuotes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4" : {
+            "SarahSibert\\ShakespeareQuotes\\Tests\\": "tests"
+        }
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
