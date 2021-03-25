@@ -2,8 +2,8 @@
 
 namespace SarahSibert\ShakespeareQuotes\Tests;
 
-use SarahSibert\ShakespeareQuotes\QuoteFactory;
 use PHPUnit\Framework\TestCase;
+use SarahSibert\ShakespeareQuotes\QuoteFactory;
 
 class QuoteFactoryTest extends TestCase
 {
