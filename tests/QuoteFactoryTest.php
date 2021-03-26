@@ -2,7 +2,11 @@
 
 namespace SarahSibert\ShakespeareQuotes\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Handler\MockHandler;
 use SarahSibert\ShakespeareQuotes\QuoteFactory;
 
 class QuoteFactoryTest extends TestCase
@@ -10,36 +14,28 @@ class QuoteFactoryTest extends TestCase
     /** @test **/
     public function it_returns_a_random_quote()
     {
-        $quotes = new QuoteFactory([
-            'This is a quote',
+        $mock = new MockHandler([
+            new Response(200, [], '{
+                "success": true,
+                "quote": {
+                    "id": "2644a599-9d5d-11ea-bdab-ac2b6ef23411",
+                    "rating": 0,
+                    "theme": "love",
+                    "quote": "And yet he loves himself. I \'t not strange? Achilles will not to the field tomorrow.",
+                    "play": "(Troilus and Cressida, Act 2, Scene 66)"
+                }
+                }'),
         ]);
 
-        $quote = $quotes->getRandomQuote();
+        $handler = HandlerStack::create($mock);
 
-        $this->assertSame('This is a quote', $quote);
-    }
+        $client = new Client(['handler' => $handler]);
 
-    /** @test **/
-    public function it_returns_a_predefined_quote()
-    {
-        $shakespeareQuotes = [
-            'All the world\'s a stage, and all the men and women merely players.',
-            'Romeo, Romeo! Wherefore art thou Romeo?',
-            'Now is the winter of our discontent',
-            'The lady doth protest too much, methinks',
-            'Beware the Ides of March.',
-            'If music be the food of love play on.',
-            'What’s in a name? A rose by any other name would smell as sweet.',
-            'The better part of valor is discretion',
-            'Uneasy lies the head that wears the crown.',
-            'Brevity is the soul of wit.',
-            'Some are born great, some achieve greatness, and some have greatness thrust upon them.',
-        ];
-
-        $quotes = new QuoteFactory();
+        $quotes = new QuoteFactory($client);
 
         $quote = $quotes->getRandomQuote();
 
-        $this->assertContains($quote, $shakespeareQuotes);
+        $this->assertSame('And yet he loves himself. I \'t not strange? Achilles will not to the field tomorrow.', $quote);
     }
+
 }

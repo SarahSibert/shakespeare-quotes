@@ -2,31 +2,25 @@
 
 namespace SarahSibert\ShakespeareQuotes;
 
+use GuzzleHttp\Client;
+
 class QuoteFactory
 {
-    protected $quotes = [
-        'All the world\'s a stage, and all the men and women merely players.',
-        'Romeo, Romeo! Wherefore art thou Romeo?',
-        'Now is the winter of our discontent',
-        'The lady doth protest too much, methinks',
-        'Beware the Ides of March.',
-        'If music be the food of love play on.',
-        'What’s in a name? A rose by any other name would smell as sweet.',
-        'The better part of valor is discretion',
-        'Uneasy lies the head that wears the crown.',
-        'Brevity is the soul of wit.',
-        'Some are born great, some achieve greatness, and some have greatness thrust upon them.',
-    ];
+    const API_ENDPOINT = 'https://shakespeare-quotes-gen.herokuapp.com/api/v1/quotes/single';
 
-    public function __construct(array $quotes = null)
+    protected $client;
+
+    public function __construct(Client $client = null)
     {
-        if ($quotes) {
-            $this->quotes = $quotes;
-        }
+        $this->client = $client ?: new Client();
     }
 
     public function getRandomQuote()
     {
-        return $this->quotes[array_rand($this->quotes)];
+        $response = $this->client->get(self::API_ENDPOINT);
+
+        $quote = json_decode($response->getBody()->getContents());
+
+        return $quote->quote->quote;
     }
 }
