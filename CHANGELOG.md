@@ -9,3 +9,6 @@ All notable changes to this project will be documented in this file.
 
 ## [2.0.0] - 2021-03-26
 - Change from hard-coded quotes to API
+
+## [3.0.0] - 2021-03-26
+- Change output to include theme and play
