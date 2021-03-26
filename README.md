@@ -7,7 +7,7 @@ Random quotes from the works of William Shakespeare
 Require the package using composer:
 
 ```bash
-composer require sarahsibert\shakespeare-quotes
+composer require sarahsibert/shakespeare-quotes
 ```
 
 ## Usage
