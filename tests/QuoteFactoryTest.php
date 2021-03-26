@@ -35,7 +35,7 @@ class QuoteFactoryTest extends TestCase
 
         $quote = $quotes->getRandomQuote();
 
-        $this->assertSame('And yet he loves himself. I \'t not strange? Achilles will not to the field tomorrow.', $quote);
+        $this->assertSame('And yet he loves himself. I \'t not strange? Achilles will not to the field tomorrow.', $quote->quote);
     }
 
 }

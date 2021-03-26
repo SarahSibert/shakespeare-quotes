@@ -21,6 +21,6 @@ class QuoteFactory
 
         $quote = json_decode($response->getBody()->getContents());
 
-        return $quote->quote->quote;
+        return $quote->quote;
     }
 }
