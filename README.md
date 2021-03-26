@@ -25,5 +25,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Credits
+
+-   [Sarah Sibert](https://github.com/SarahSibert)
+-   [All Contributors](../../contributors)
+
 ## License
 [MIT](./LICENSE.md)
