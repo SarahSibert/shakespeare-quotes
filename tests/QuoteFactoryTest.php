@@ -3,10 +3,10 @@
 namespace SarahSibert\ShakespeareQuotes\Tests;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Handler\MockHandler;
 use SarahSibert\ShakespeareQuotes\QuoteFactory;
 
 class QuoteFactoryTest extends TestCase
@@ -37,5 +37,4 @@ class QuoteFactoryTest extends TestCase
 
         $this->assertSame('And yet he loves himself. I \'t not strange? Achilles will not to the field tomorrow.', $quote->quote);
     }
-
 }
